@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="full-width">
     <app-nav/>
     <router-view></router-view>
   </div>
@@ -13,3 +13,9 @@ export default {
   }
 }
 </script>
+
+<style lang="less" scoped>
+.full-width {
+  width: 100vw;
+}
+</style>
