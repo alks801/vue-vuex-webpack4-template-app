@@ -1,7 +1,9 @@
 <template>
   <div class="full-width">
     <app-nav/>
-    <router-view></router-view>
+    <div class="content">
+      <router-view></router-view>
+    </div>
   </div>
 </template>
 
@@ -17,5 +19,8 @@ export default {
 <style lang="less" scoped>
 .full-width {
   width: 100vw;
+}
+.content {
+  padding: 20px;
 }
 </style>
