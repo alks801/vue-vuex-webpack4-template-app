@@ -1,5 +1,6 @@
 <template>
   <div class="home-container">
+      <img :src="logo">
       <div class="title">
           Home Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos at quis dolores maxime recusandae enim beatae vero, doloribus iste rerum!
       </div>
@@ -12,8 +13,9 @@
 
 <script>
 import { mapGetters, mapActions } from "vuex";
-
+import logo from '../assets/img/logo.png'
 export default {
+  data: () => ({logo}),
   computed: mapGetters({
     weatherList: "allWeather"
   }),

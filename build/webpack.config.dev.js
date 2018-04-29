@@ -12,6 +12,10 @@ module.exports = {
   module: {
     rules: [
       {
+        test: /\.css$/,
+        loaders: ['style-loader', 'css-loader']
+      },
+      {
         test: /\.less$/,
         loaders: ['style-loader', 'css-loader', 'less-loader']
       },
@@ -22,6 +26,15 @@ module.exports = {
       {
         test: /\.js$/,
         loader: 'babel-loader'
+      },
+      {
+        test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
+        loader: 'file-loader',
+        options: {
+          name: '[name].[ext]',
+          publicPath: 'img/',
+          outputPath: 'img/'
+        },
       },
     ]
   },

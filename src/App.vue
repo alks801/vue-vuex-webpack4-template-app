@@ -9,6 +9,7 @@
 
 <script>
 import appNav from './components/Nav.vue'
+
 export default {
   components: {
     appNav
@@ -16,7 +17,9 @@ export default {
 }
 </script>
 
-<style lang="less" scoped>
+<style lang="less">
+  
+
 .full-width {
   width: 100vw;
 }
