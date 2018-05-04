@@ -7,7 +7,6 @@
       <div class="weather" v-for="w in weatherList" :key="w.id">
           {{w.city}}, {{w.temp}}
       </div>
-
     </div>
 </template>
 

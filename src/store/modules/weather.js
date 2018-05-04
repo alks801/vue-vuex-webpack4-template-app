@@ -13,9 +13,9 @@ const getters = {
 //actions
 const actions = {
     getAllWeather({ commit }) {
-        api.getWeather(weather => {
-            commit('setWeather', weather)
-        })
+        console.log(1)
+        api.getWeather().then((x) => commit('setWeather', x.data))
+        console.log(2)
     },
     addWeather({ state, commit }, weather) {
         commit('addWeather', weather)
@@ -32,7 +32,7 @@ const mutations = {
     }
 }
 
-export default{
+export default {
     state,
     getters,
     actions,

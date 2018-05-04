@@ -4,11 +4,11 @@ const _weather = [
 ]
 
 export default {
-    getWeather (cb) {
+    getWeather: () => new Promise(resolve => {
         setTimeout(() => {
-            cb(_weather)
+             resolve({data: _weather})
         }, 100);
-    },
+    }),
 
     addNewCity(data, cb, errorCb) {
         setTimeout(() => {
