@@ -14,10 +14,12 @@
 <script>
 import { mapGetters, mapActions } from "vuex";
 import logo from '../assets/img/logo.png'
+import weatherDefs from '../store/modules/weather/definitions'
+
 export default {
   data: () => ({logo}),
   computed: mapGetters({
-    weatherList: "allWeather"
+    weatherList: weatherDefs.getters.ALL_WEATHER
   }),
 
   /*
@@ -28,7 +30,7 @@ export default {
     }
   }*/
   created() {
-    this.$store.dispatch("getAllWeather");
+    this.$store.dispatch(weatherDefs.actions.GET_ALL_WEATHER);
   }
 };
 </script>
