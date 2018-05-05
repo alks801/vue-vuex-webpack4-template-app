@@ -7,17 +7,22 @@
       <div class="weather" v-for="w in weatherList" :key="w.id">
           {{w.city}}, {{w.temp}}
       </div>
-
+      <div class="add-weather">
+        <input type="text" name="add-w" v-model="newWeather">
+        <input type="button" value="Add Weather" @click="addWeather">
+      </div>
     </div>
 </template>
 
 <script>
 import { mapGetters, mapActions } from "vuex";
-import logo from '../assets/img/logo.png'
-import weatherDefs from '../store/modules/weather/definitions'
+import logo from "../assets/img/logo.png";
+import weatherDefs from "../store/modules/weather/definitions";
 
 export default {
-  data: () => ({logo}),
+  data: function() {
+    return { logo, newWeather: "" };
+  },
   computed: mapGetters({
     weatherList: weatherDefs.getters.ALL_WEATHER
   }),
@@ -31,6 +36,15 @@ export default {
   }*/
   created() {
     this.$store.dispatch(weatherDefs.actions.GET_ALL_WEATHER);
+  },
+  methods: {
+    addWeather: function() {
+      var newWeather = this.newWeather.split(",");
+      if (!newWeather || newWeather.length != 2) {
+        return console.log(newWeather);
+      }
+      this.$store.dispatch(weatherDefs.actions.ADD_WEATHER, {city: newWeather[0], temp: newWeather[1]});
+    }
   }
 };
 </script>

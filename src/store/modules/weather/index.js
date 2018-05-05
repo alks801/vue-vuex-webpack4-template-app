@@ -1,5 +1,5 @@
-import api from '../../../api'
-import def from './definitions'
+import api from '../../../api/weather'
+import definitions from './definitions'
 
 // initial state
 const state = {
@@ -8,34 +8,34 @@ const state = {
 
 //getters
 const getters = {
-    [def.getters.ALL_WEATHER]: state => state.all
+    [definitions.getters.ALL_WEATHER]: state => state.all
 }
 
 //actions
 const actions = {
-    [def.actions.GET_ALL_WEATHER]({ commit }) {
+    [definitions.actions.GET_ALL_WEATHER]({ commit }) {
         api.getWeather(weather => {
-            commit(def.mutations.SET_WEATHER, weather)
+            commit(definitions.mutations.SET_WEATHER, weather)
         })
     },
-    [def.actions.ADD_WEATHER]({ state, commit }, weather) {
-        api.addNewCity(weather => {
-            commit(def.mutations.ADD_WEATHER, weather)
-        })
+    [definitions.actions.ADD_WEATHER]({ state, commit }, weather) {
+        api.addNewWeather(weather,
+            function cb() { commit(definitions.mutations.ADD_WEATHER, weather) },
+            function errCb() { console.log('error') })
     }
 }
 
 //mutations
 const mutations = {
-    [def.mutations.SET_WEATHER](state, weather) {
+    [definitions.mutations.SET_WEATHER](state, weather) {
         state.all = weather
     },
-    [def.mutations.ADD_WEATHER](state, weather) {
+    [definitions.mutations.ADD_WEATHER](state, weather) {
         state.all.push(weather)
     }
 }
 
-export default{
+export default {
     state,
     getters,
     actions,
